@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Donor - Blood Donation Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>BloodDonor</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="register.html" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="donors.html" class="nav-link">Find Donor</a></li>
+                <li class="nav-item"><a href="emergency.html" class="nav-link">Emergency</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="registration-section">
+        <div class="container">
+            <h1>Register as a Blood Donor</h1>
+            <p class="section-subtitle">Join our life-saving community and help those in need</p>
+
+            <form id="registrationForm" action="submit.php" method="POST" class="registration-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" name="age" min="18" max="65" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bloodType">Blood Type *</label>
+                        <select id="bloodType" name="bloodType" required>
+                            <option value="">Select Blood Type</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender *</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State *</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">ZIP Code *</label>
+                        <input type="text" id="pincode" name="pincode" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastDonation">Last Donation Date</label>
+                    <input type="date" id="lastDonation" name="lastDonation">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="eligibility" name="eligibility" required>
+                    <label for="eligibility">I confirm that I meet all eligibility criteria for blood donation *</label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">I consent to share my information with hospitals and individuals in need *</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">Register as Donor</button>
+            </form>
+
+            <div class="eligibility-info">
+                <h3>Eligibility Criteria</h3>
+                <ul>
+                    <li>Age: 18-65 years</li>
+                    <li>Weight: At least 50 kg (110 lbs)</li>
+                    <li>Good health condition</li>
+                    <li>No serious illnesses</li>
+                    <li>Not pregnant or breastfeeding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 BloodDonor Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

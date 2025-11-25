@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Portal - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #810310;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo h2 {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ffd6d6;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section with Blood Cells Background */
+        .hero {
+            background: 
+                linear-gradient(135deg, rgba(129, 3, 16, 0.85), rgba(168, 7, 25, 0.9)),
+                url('https://media.istockphoto.com/photos/blood-cells-bacteria-and-virus-traveling-through-a-vein-bubble-air-picture-id1128949422?b=1&k=20&m=1128949422&s=170667a&w=0&h=zfXYc2kNIp4AzbHVMSptdgQr1vhbJi8ecP1ATYe9yeU=');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            padding: 140px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffffff, #ffd6d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #80030f, #a80213);
+            color: white;
+            border: 2px solid #ffd6d6;
+            box-shadow: 0 4px 15px rgba(128, 3, 15, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #a80213, #cc0c1f);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(220, 53, 69, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.95);
+            color: #80030f;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #cc0c1f;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Feature Card Buttons */
+        .btn-save-lives {
+            background: #dc3545;
+            color: white;
+            margin-top: 1rem;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-save-lives:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-health-benefits {
+            background: #007bff;
+            color: white;
+            margin-top: 1rem;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-health-benefits:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-health-check {
+            background: #28a745;
+            color: white;
+            margin-top: 1rem;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-health-check:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #80030f, #dc3545, #80030f);
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 3rem;
+            color: #80030f;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #dc3545, #80030f);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(128, 3, 15, 0.15);
+            border-color: #dc3545;
+        }
+
+        .feature-card h3 {
+            color: #80030f;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #343a40, #2c3034);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 4px solid #80030f;
+        }
+
+        /* Statistics Section */
+        .stats {
+            background: linear-gradient(135deg, #80030f, #a80213, #cc0c1f);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://media.istockphoto.com/photos/blood-cells-bacteria-and-virus-traveling-through-a-vein-bubble-air-picture-id1128949422?b=1&k=20&m=1128949422&s=170667a&w=0&h=zfXYc2kNIp4AzbHVMSptdgQr1vhbJi8ecP1ATYe9yeU=');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .stats .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: #80030f;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            
+            .feature-card {
+                min-height: 300px;
+            }
+
+            .btn {
+                padding: 15px 30px;
+                width: 250px;
+                font-size: 1.1rem;
+            }
+
+            .features h2 {
+                font-size: 2.2rem;
+            }
+
+            .stats h2 {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>BloodDonor</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="register.html" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="donors.html" class="nav-link">Find Donor</a></li>
+                <li class="nav-item"><a href="emergency.html" class="nav-link">Emergency</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Save Lives, Donate Blood</h1>
+            <p>Join our community of compassionate blood donors and be the reason someone gets to see tomorrow. Your single donation can save up to three lives.</p>
+            <div class="hero-buttons">
+                <a href="register.html" class="btn btn-primary">Become a Donor</a>
+                <a href="donors.html" class="btn btn-secondary">Find a Donor</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="container">
+            <h2>Our Impact</h2>
+            <p style="opacity: 0.9; margin-bottom: 2rem; font-size: 1.2rem;">Together, we're creating a lifeline for those in need</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Lives Saved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Active Donors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Hospitals Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Emergency Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Why Donate Blood?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Save Lives</h3>
+                    <p>Your blood donation can save up to 3 lives. Every pint of blood you donate can be separated into components that help multiple patients in critical need.</p>
+                    <!-- Save Lives Button -->
+                    <a href="https://savelifefoundation.org" class="btn btn-save-lives" target="_blank">
+                        Learn More
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <h3>Health Benefits</h3>
+                    <p>Regular donation helps maintain healthy iron levels, reduces cardiovascular risk, and provides a free health screening with every donation.</p>
+                    <!-- Health Benefits Button -->
+                    <a href="https://en.wikipedia.org/wiki/Health" class="btn btn-health-benefits" target="_blank">
+                        Learn More
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <h3>Free Health Check</h3>
+                    <p>Get a comprehensive free health screening before donation including blood pressure, hemoglobin levels, and basic health assessment.</p>
+                    <!-- Free Health Check Button -->
+                    <a href="https://www.who.int/health-topics/blood-safety" class="btn btn-health-check" target="_blank">
+                        Get Free Health Check
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 BloodDonor Portal. All rights reserved. | Saving Lives Together</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+
+        // Animate statistics on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        let target;
+                        if (stat.textContent.includes('24/7')) {
+                            return; // Skip animation for 24/7
+                        }
+                        target = parseInt(stat.textContent);
+                        let current = 0;
+                        const increment = target / 30;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                stat.textContent = target + '+';
+                                clearInterval(timer);
+                            } else {
+                                stat.textContent = Math.floor(current) + '+';
+                            }
+                        }, 40);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats section
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
